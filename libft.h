@@ -6,7 +6,7 @@
 /*   By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:27:51 by jose              #+#    #+#             */
-/*   Updated: 2025/10/06 16:57:50 by jose-car         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:34:53 by jose-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <limits.h>
 # include <stdint.h>
 
-//	LIBC FUNCTIONS PART I:
+//	LIBC FUNCTIONS - PART I:
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -53,7 +53,7 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 
-// LIBC FUNCTIONS PART II:
+// LIBC FUNCTIONS - PART II:
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -66,5 +66,17 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// LIBC FUNCTIONS - BONUS:
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 08:28:12 by jose              #+#    #+#              #
-#    Updated: 2025/10/06 16:58:07 by jose-car         ###   ########.fr        #
+#    Updated: 2025/10/06 20:35:10 by jose-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,25 +45,38 @@ SRCS	=	ft_isalpha.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS		=	$(SRCS:.c=.o)
 
-NAME	=	libft.a
+BONUS		=	ft_lstnew_bonus.c \
+				ft_lstadd_front_bonus.c \
+				ft_lstsize_bonus.c
 
-CC		=	cc
-RM		=	rm -f
-CFLAGS	=	-Wall -Wextra -Werror
+BONUS_OBJS	=	$(BONUS:.c=.o)
 
-all:		$(NAME)
+NAME		=	libft.a
 
-$(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+CC			=	cc
+RM			=	rm -f
+CFLAGS		=	-Wall -Wextra -Werror
+BONUS_FLAG	= 	.bonus
+
+all:			$(NAME)
+
+$(NAME):		$(OBJS)
+				ar -rcs $(NAME) $(OBJS)
 
 clean:
-			$(RM) $(OBJS)
+				$(RM) $(OBJS)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
-re:			fclean all
+re:				fclean all
 
-.PHONY:		all clean fclean re
+bonus:			$(BONUS_FLAG)
+
+$(BONUS_FLAG):	$(OBJS) $(BONUS_OBJS)
+				ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				touch $(BONUS_FLAG)
+
+.PHONY:			all clean fclean re bonus
