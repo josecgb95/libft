@@ -6,7 +6,7 @@
 #    By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 08:28:12 by jose              #+#    #+#              #
-#    Updated: 2025/10/04 11:39:17 by jose-car         ###   ########.fr        #
+#    Updated: 2025/10/06 16:58:07 by jose-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,13 @@ SRCS	=	ft_isalpha.c \
 			ft_strjoin.c \
 			ft_strtrim.c \
 			ft_split.c \
-			ft_itoa.c
+			ft_itoa.c \
+			ft_strmapi.c \
+			ft_striteri.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:27:51 by jose              #+#    #+#             */
-/*   Updated: 2025/10/04 11:39:02 by jose-car         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:57:50 by jose-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 # define LIBFT_H
 
 //	PARA ESCRIBIR:
+
 # include <unistd.h>
 # include <stdio.h>
 
 //	PARA MALLOC:
+
 # include <stdlib.h>
 
 // PARA LIMITES:
+
 # include <limits.h>
 # include <stdint.h>
 
@@ -51,10 +54,17 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 
 // LIBC FUNCTIONS PART II:
+
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
