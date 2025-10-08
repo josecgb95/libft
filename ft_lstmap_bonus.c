@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 14:15:11 by jose-car          #+#    #+#             */
-/*   Updated: 2025/10/08 11:39:58 by jose-car         ###   ########.fr       */
+/*   Created: 2025/10/08 12:07:39 by jose-car          #+#    #+#             */
+/*   Updated: 2025/10/08 13:22:28 by jose-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Deletes and frees the given 'lst' node and all consecutive nodes
-within that node, using the 'del' function and free(3).
-At the end, the list pointer must be NULL.*/
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*temp;
-	t_list	*aux;
+	t_list	*new_lst;
+	void	*new_content;
 
-	if (!lst || !(*lst) || !del)
-		return ;
-	aux = (*lst);
-	temp = aux;
-	while (temp != NULL)
+	new_lst = NULL;
+	while (lst != NULL)
 	{
-		temp = temp->next;
-		ft_lstdelone(aux, del);
-		aux = temp;
+		new_content = f(lst->content);
+		temp = ft_lstnew(new_content);
+		if (!temp)
+		{
+			del(new_content);
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, temp);
+		lst = lst->next;
 	}
-	*lst = NULL;
+	return (new_lst);
 }

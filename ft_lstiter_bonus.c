@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 14:15:11 by jose-car          #+#    #+#             */
-/*   Updated: 2025/10/08 11:39:58 by jose-car         ###   ########.fr       */
+/*   Created: 2025/10/08 11:41:49 by jose-car          #+#    #+#             */
+/*   Updated: 2025/10/08 11:47:35 by jose-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Deletes and frees the given 'lst' node and all consecutive nodes
-within that node, using the 'del' function and free(3).
-At the end, the list pointer must be NULL.*/
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*temp;
-	t_list	*aux;
 
-	if (!lst || !(*lst) || !del)
+	temp = lst;
+	if (lst == NULL)
 		return ;
-	aux = (*lst);
-	temp = aux;
 	while (temp != NULL)
 	{
+		f(temp->content);
 		temp = temp->next;
-		ft_lstdelone(aux, del);
-		aux = temp;
 	}
-	*lst = NULL;
 }
