@@ -6,7 +6,7 @@
 #    By: jose-car <jose-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 08:28:12 by jose              #+#    #+#              #
-#    Updated: 2025/10/08 12:24:39 by jose-car         ###   ########.fr        #
+#    Updated: 2025/10/09 15:17:14 by jose-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ clean:
 				$(RM) $(OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(BONUS_OBJS)
 
 re:				fclean all
 
